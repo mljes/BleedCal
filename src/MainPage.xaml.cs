@@ -6,6 +6,8 @@ namespace BleedCal
 
     public partial class MainPage : ContentPage
     {
+        readonly Color periodDayColor = new Color(131, 47, 131);
+
         int displayedMonth;
         int displayedYear;
 
@@ -61,7 +63,7 @@ namespace BleedCal
                     {
                         BindingContext = currentDate,
                         Text = currentDate.Day.ToString(),
-                        BackgroundColor = dateManager.periodDays.Contains(currentDate) ? Colors.DarkRed : Colors.Plum,
+                        BackgroundColor = dateManager.periodDays.Contains(currentDate) ? periodDayColor : Colors.Plum,
                         WidthRequest = 50,
                         HeightRequest = 50,
                         CornerRadius = 25
@@ -119,7 +121,7 @@ namespace BleedCal
             else
             {
                 dateManager.periodDays.Add(buttonDate);
-                button.BackgroundColor = Colors.DarkRed;
+                button.BackgroundColor = periodDayColor;
             }
 
 #if DEBUG
